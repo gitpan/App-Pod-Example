@@ -1,2 +1,12 @@
+0.02 (July, 16, 2012)
+- Add doc for pod_example script.
+- Fix git repository.
+- Fix help indent in pod_example script.
+- Remove "(3pm)" from pod doc.
+- Rewrite 03-pod.t to better version for Perl 5.6.
+- Rewrite to new version of build system.
+- Add examples/ directory.
+- Fix Makefile.PL to META 1.4.
+
 0.01 (July 15, 2011)
 - First version.

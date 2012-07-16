@@ -11,24 +11,23 @@ author 'Michal Špaček <skim@cpan.org>';
 install_script 'bin/pod_example';
 license 'bsd';
 name 'App-Pod-Example';
-requires 'Class::Utils' => 0.01;
+requires 'Class::Utils' => 0.03;
 requires 'English' => 0;
-requires 'Error::Pure' => 0.01;
-requires 'Pod::Example' => 0.01;
+requires 'Error::Pure' => 0.08;
+requires 'Pod::Example' => 0.03;
 requires 'Readonly' => 0;
-resources 'repository' => {
-	'url' => 'git://github.com/tupinek/App-pod-Example',
-	'web' => 'https://github.com/tupinek/App-pod-Example',
-	'type' => 'git',
-};
+resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
+	'?Name=App-Pod-Example';
+resources 'homepage' => 'https://github.com/tupinek/App-Pod-Example';
+resources 'repository' => 'git://github.com/tupinek/App-Pod-Example';
 test_requires 'English' => 0;
-test_requires 'File::Object' => 0.01;
+test_requires 'File::Object' => 0.05;
 test_requires 'Test::More' => 0;
 test_requires 'Test::Output' => 0;
 test_requires 'Test::Pod' => 0;
 test_requires 'Test::Pod::Coverage' => 0;
 tests_recursive;
-version '0.01';
+version '0.02';
 
 # Run.
 WriteAll();

@@ -17,7 +17,7 @@ Readonly::Scalar my $HASH => q{#};
 Readonly::Scalar my $SPACE => q{ };
 
 # Version.
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 # Constructor.
 sub new {
@@ -172,15 +172,15 @@ Examples with die() cannot process, because returns bad results.
 
 =head1 DEPENDENCIES
 
-L<Class::Utils(3pm)>,
-L<English(3pm)>,
-L<Error::Pure(3pm)>,
-L<Pod::Example(3pm)>,
-L<Readonly(3pm)>.
+L<Class::Utils>,
+L<English>,
+L<Error::Pure>,
+L<Pod::Example>,
+L<Readonly>.
 
 =head1 REPOSITORY
 
-L<https://github.com/tupinek/App-pod-Example>
+L<https://github.com/tupinek/App-Pod-Example>
 
 =head1 AUTHOR
 
@@ -194,6 +194,6 @@ BSD license.
 
 =head1 VERSION
 
-0.01
+0.02
 
 =cut
