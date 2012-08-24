@@ -17,15 +17,20 @@ Readonly::Scalar my $HASH => q{#};
 Readonly::Scalar my $SPACE => q{ };
 
 # Version.
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 # Constructor.
 sub new {
 	my ($class, @params) = @_;
+
+	# Create object.
 	my $self = bless {}, $class;
 
 	# Debug.
 	$self->{'debug'} = 1;
+
+	# Enumerate lines.
+	$self->{'enumerate'} = 0;
 
 	# Print.
 	$self->{'print'} = 0;
@@ -63,7 +68,16 @@ sub run {
 		if ($self->{'debug'}) {
 			_debug('Example source');
 		}
-		print $code."\n";
+		if ($self->{'enumerate'}) {
+			my @lines = split "\n", $code;
+			my $count = 1;
+			foreach my $line (@lines) {
+				print $count.': '.$line."\n";
+				$count++;
+			}
+		} else {
+			print $code."\n";
+		}
 	}
 
 	# Run.
@@ -82,9 +96,9 @@ sub run {
 
 sub _debug {
 	my $text = shift;
-	print $HASH, $DASH x 80, "\n";
+	print $HASH, $DASH x 79, "\n";
 	print $HASH, $SPACE, $text."\n";
-	print $HASH, $DASH x 80, "\n";
+	print $HASH, $DASH x 79, "\n";
 	return;
 }
 
@@ -122,6 +136,11 @@ App::Pod::Example - Base class for pod_example script.
  Debug flag. It means print debug messages.
  Default value is 1.
 
+=item * C<enumerate>
+
+ Enumerate lines in print output.
+ Default value is 0.
+
 =item * C<print>
 
  Print flag. It means print of example.
@@ -145,11 +164,10 @@ App::Pod::Example - Base class for pod_example script.
 
 =head1 ERRORS
 
- Mine:
+ new():
          Cannot process any action.
-
- From Class::Utils::set_params():
-         Unknown parameter '%s'.
+         From Class::Utils::set_params():
+                 Unknown parameter '%s'.
 
 =head1 EXAMPLE
 
@@ -162,6 +180,7 @@ App::Pod::Example - Base class for pod_example script.
 
  # Run.
  App::Pod::Example->new(
+         'enumerate' => 1,
          'print' => 1,
          'run' => 1,
  )->run('Pod::Example');
@@ -194,6 +213,6 @@ BSD license.
 
 =head1 VERSION
 
-0.02
+0.03
 
 =cut
