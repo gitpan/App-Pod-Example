@@ -17,7 +17,7 @@ Readonly::Scalar my $HASH => q{#};
 Readonly::Scalar my $SPACE => q{ };
 
 # Version.
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 # Constructor.
 sub new {
@@ -59,7 +59,7 @@ sub run {
 
 	# No code.
 	if (! defined $code) {
-		print "No code\n";
+		print "No code.\n";
 		return;
 	}
 
@@ -87,7 +87,7 @@ sub run {
 		}
 		eval $code;	
 		if ($EVAL_ERROR) {
-			print "Cannot process example rigth, because die.\n";
+			print "Cannot process example right, because die.\n";
 		}
 	}
 
@@ -213,6 +213,6 @@ BSD license.
 
 =head1 VERSION
 
-0.03
+0.04
 
 =cut
