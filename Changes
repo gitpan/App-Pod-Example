@@ -1,3 +1,9 @@
+0.05 (April 28, 2013)
+- Add Test::NoWarnings to tests.
+- Add Test::Warn for one test.
+- Fix help (add -e option to possible arguments).
+- Improve help to 80 chars per line.
+
 0.04 (November 12, 2012)
 - Fix rigth word to right.
 - Improve cover testing.
