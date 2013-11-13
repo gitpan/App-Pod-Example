@@ -8,14 +8,18 @@ use inc::Module::Install;
 # Definition.
 abstract 'Base class for pod_example script.';
 author 'Michal Špaček <skim@cpan.org>';
-install_script 'bin/pod_example';
+install_script 'bin/pod-example';
 license 'bsd';
 name 'App-Pod-Example';
+readme_from 'Example.pm';
 requires 'Class::Utils' => 0.03;
 requires 'English' => 0;
 requires 'Error::Pure' => 0.08;
+requires 'File::Temp' => 0;
+requires 'IO::Barf' => 0.04;
 requires 'Pod::Example' => 0.03;
 requires 'Readonly' => 0;
+requires 'perl' => '5.6.0';
 resources 'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html'.
 	'?Name=App-Pod-Example';
 resources 'homepage' => 'https://github.com/tupinek/App-Pod-Example';
@@ -29,7 +33,7 @@ test_requires 'Test::Pod' => 0;
 test_requires 'Test::Pod::Coverage' => 0;
 test_requires 'Test::Warn' => 0;
 tests_recursive;
-version '0.08';
+version '0.09';
 
 # Run.
 WriteAll();
