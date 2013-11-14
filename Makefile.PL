@@ -14,7 +14,7 @@ name 'App-Pod-Example';
 readme_from 'Example.pm';
 requires 'Class::Utils' => 0.03;
 requires 'English' => 0;
-requires 'Error::Pure' => 0.08;
+requires 'Error::Pure' => 0.15;
 requires 'File::Temp' => 0;
 requires 'IO::Barf' => 0.04;
 requires 'Pod::Example' => 0.03;
@@ -33,7 +33,7 @@ test_requires 'Test::Pod' => 0;
 test_requires 'Test::Pod::Coverage' => 0;
 test_requires 'Test::Warn' => 0;
 tests_recursive;
-version '0.09';
+version '0.10';
 
 # Run.
 WriteAll();
