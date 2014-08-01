@@ -15,11 +15,12 @@ use Readonly;
 
 # Constants.
 Readonly::Scalar my $DASH => q{-};
+Readonly::Scalar my $EMPTY_STR => q{};
 Readonly::Scalar my $HASH => q{#};
 Readonly::Scalar my $SPACE => q{ };
 
 # Version.
-our $VERSION = 0.11;
+our $VERSION = 0.12;
 
 # Constructor.
 sub new {
@@ -54,7 +55,7 @@ sub new {
 
 # Run.
 sub run {
-	my ($self, $file_or_module, $section, $number_of_example) = @_;
+	my ($self, $file_or_module, $section, $number_of_example, $args_ar) = @_;
 
 	# Get example code.
 	my $code = get($file_or_module, $section, $number_of_example);
@@ -89,7 +90,13 @@ sub run {
 		}
 		my (undef, $tempfile) = tempfile();
 		barf($tempfile, $code);
-		system "$EXECUTABLE_NAME $tempfile";
+		my $args = $EMPTY_STR;
+		if (defined $args_ar && ref $args_ar eq 'ARRAY'
+			&& @{$args_ar}) {
+
+			$args = join ' ', @{$args_ar};
+		}
+		system "$EXECUTABLE_NAME $tempfile $args";
 		unlink $tempfile;
 	}
 
@@ -155,12 +162,16 @@ App::Pod::Example - Base class for pod_example script.
 
 =back
 
-=item C<run($file_or_module, $section, $number_of_example)>
+=item C<run($file_or_module, $section, $number_of_example, $args_ar)>
 
  Run method.
- $file_or_module - File with pod doc or perl module.
- $section - Pod section with example. Default value is 'EXAMPLE'.
- $number_of_example - Number of example. Default value is 1.
+ $file_or_module    - File with pod doc or perl module.
+ $section           - Pod section with example. Default value is 'EXAMPLE'.
+ $number_of_example - Number of example. If exists 'EXAMPLE1' and 'EXAMPLE2'
+                      sections, then this number can be '1' or '2'.
+                      Default value is nothing.
+ $args_ar           - Reference to array with arguments for 'run' mode.
+ Returns undef.
 
 =back
 
@@ -217,6 +228,6 @@ BSD license.
 
 =head1 VERSION
 
-0.11
+0.12
 
 =cut
