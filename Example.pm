@@ -20,7 +20,7 @@ Readonly::Scalar my $HASH => q{#};
 Readonly::Scalar my $SPACE => q{ };
 
 # Version.
-our $VERSION = 0.12;
+our $VERSION = 0.13;
 
 # Constructor.
 sub new {
@@ -94,7 +94,7 @@ sub run {
 		if (defined $args_ar && ref $args_ar eq 'ARRAY'
 			&& @{$args_ar}) {
 
-			$args = join ' ', @{$args_ar};
+			$args = "'".(join "' '", @{$args_ar})."'";
 		}
 		system "$EXECUTABLE_NAME $tempfile $args";
 		unlink $tempfile;
@@ -228,6 +228,6 @@ BSD license.
 
 =head1 VERSION
 
-0.12
+0.13
 
 =cut
